@@ -1,0 +1,1478 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Personal portfolio for a Senior Staff Platform / Infrastructure Engineer.">
+  <title>Lena Ryazanov — Senior Staff Platform Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --accent: #0d7d96;
+      --bg: #f8fafc;
+      --bg-soft: #f1f5f9;
+      --surface: rgba(255, 255, 255, 0.82);
+      --surface-strong: #ffffff;
+      --text: #101820;
+      --text-muted: #52606d;
+      --text-soft: #6b7280;
+      --border: rgba(15, 23, 42, 0.12);
+      --border-strong: rgba(15, 23, 42, 0.2);
+      --shadow: 0 18px 50px rgba(15, 23, 42, 0.055);
+      --shadow-soft: 0 10px 24px rgba(15, 23, 42, 0.04);
+      --focus: rgba(13, 125, 150, 0.28);
+      --nav-height: 72px;
+      --radius: 8px;
+      --radius-lg: 12px;
+      --max-width: 1160px;
+      --section-pad: clamp(4.5rem, 8vw, 7.5rem);
+      --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      --body: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --display: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color-scheme: light;
+    }
+
+    html[data-theme="dark"] {
+      --accent: #22d3ee;
+      --bg: #0b0d10;
+      --bg-soft: #101317;
+      --surface: rgba(16, 19, 23, 0.82);
+      --surface-strong: #12161b;
+      --text: #edf3f8;
+      --text-muted: #9aa7b5;
+      --text-soft: #7f8a99;
+      --border: rgba(226, 232, 240, 0.12);
+      --border-strong: rgba(226, 232, 240, 0.22);
+      --shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+      --shadow-soft: 0 10px 24px rgba(0, 0, 0, 0.2);
+      --focus: rgba(34, 211, 238, 0.25);
+      color-scheme: dark;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--nav-height) + 24px);
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--body);
+      font-size: 16px;
+      line-height: 1.65;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      background:
+        linear-gradient(to right, var(--border) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+      background-size: 88px 88px;
+      opacity: 0.18;
+      mask-image: linear-gradient(to bottom, #000 0%, transparent 78%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--accent);
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      color: inherit;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 3px;
+      border-radius: 6px;
+    }
+
+    .skip-link {
+      position: fixed;
+      left: 1rem;
+      top: 1rem;
+      z-index: 100;
+      padding: 0.75rem 1rem;
+      background: var(--surface-strong);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius);
+      transform: translateY(-180%);
+      transition: transform 180ms ease;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      min-height: var(--nav-height);
+      border-bottom: 1px solid var(--border);
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav-wrap {
+      width: min(100% - 2rem, var(--max-width));
+      min-height: var(--nav-height);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      min-width: max-content;
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius);
+      color: var(--accent);
+      background: var(--surface);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.15rem;
+      font-family: var(--mono);
+      font-size: 0.77rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding: 0.62rem 0.78rem;
+      border-radius: var(--radius);
+      color: var(--text-muted);
+    }
+
+    .nav-links a::before {
+      content: "";
+      position: absolute;
+      left: 0.78rem;
+      right: 0.78rem;
+      bottom: 0.42rem;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 180ms ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+    }
+
+    .nav-links a.active::before {
+      transform: scaleX(1);
+    }
+
+    .icon-button {
+      display: inline-grid;
+      place-items: center;
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      cursor: pointer;
+      box-shadow: none;
+      transition: border-color 180ms ease, transform 180ms ease, background 180ms ease;
+    }
+
+    .icon-button:hover {
+      border-color: var(--border-strong);
+      transform: translateY(-1px);
+    }
+
+    .theme-toggle svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--accent);
+      stroke-width: 1.8;
+      fill: none;
+    }
+
+    .sun-icon,
+    html[data-theme="dark"] .moon-icon {
+      display: none;
+    }
+
+    html[data-theme="dark"] .sun-icon {
+      display: block;
+    }
+
+    .menu-button {
+      display: none;
+      position: relative;
+    }
+
+    .menu-button span {
+      position: absolute;
+      width: 18px;
+      height: 1px;
+      background: var(--text);
+      transition: transform 180ms ease, opacity 180ms ease;
+    }
+
+    .menu-button span:nth-child(1) {
+      transform: translateY(-6px);
+    }
+
+    .menu-button span:nth-child(3) {
+      transform: translateY(6px);
+    }
+
+    .menu-button[aria-expanded="true"] span:nth-child(1) {
+      transform: rotate(45deg);
+    }
+
+    .menu-button[aria-expanded="true"] span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-button[aria-expanded="true"] span:nth-child(3) {
+      transform: rotate(-45deg);
+    }
+
+    main {
+      overflow: hidden;
+    }
+
+    .section {
+      width: min(100% - 2rem, var(--max-width));
+      margin: 0 auto;
+      padding: var(--section-pad) 0;
+      scroll-margin-top: calc(var(--nav-height) + 24px);
+    }
+
+    .section + .section {
+      border-top: 1px solid var(--border);
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
+
+    .section-label::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      font-family: var(--display);
+      letter-spacing: -0.045em;
+      line-height: 1.05;
+    }
+
+    h1 {
+      max-width: 900px;
+      font-size: clamp(3.2rem, 10vw, 7.8rem);
+    }
+
+    h2 {
+      max-width: 780px;
+      font-size: clamp(2rem, 4.7vw, 4rem);
+    }
+
+    h3 {
+      font-size: clamp(1.15rem, 2vw, 1.35rem);
+      letter-spacing: -0.025em;
+    }
+
+    p {
+      margin: 0;
+      color: var(--text-muted);
+    }
+
+    .hero {
+      position: relative;
+      min-height: calc(100svh - var(--nav-height));
+      display: grid;
+      align-items: center;
+      padding-top: clamp(4rem, 7vw, 6rem);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: clamp(1rem, 2vw, 2rem) 0 0 auto;
+      width: min(46vw, 520px);
+      height: min(46vw, 520px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      opacity: 0.8;
+      background:
+        linear-gradient(to right, var(--border) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+      background-size: 26px 26px;
+      mask-image: linear-gradient(135deg, #000, transparent 72%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .status-line {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      width: fit-content;
+      padding: 0.42rem 0.62rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--surface);
+      color: var(--text-muted);
+      font-family: var(--mono);
+      font-size: 0.76rem;
+      letter-spacing: 0.02em;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .status-line::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .role-line {
+      max-width: 700px;
+      color: var(--text);
+      font-family: var(--display);
+      font-size: clamp(1.28rem, 3vw, 2.2rem);
+      font-weight: 600;
+      letter-spacing: -0.035em;
+      line-height: 1.18;
+    }
+
+    .positioning {
+      max-width: 720px;
+      font-size: clamp(1rem, 1.4vw, 1.15rem);
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 0.25rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      min-height: 44px;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius);
+      background: var(--surface-strong);
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      box-shadow: none;
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, color 180ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      color: var(--text);
+      border-color: var(--accent);
+    }
+
+    .button.primary {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: var(--bg);
+    }
+
+    .button.primary:hover {
+      color: var(--bg);
+      background: var(--accent);
+      filter: saturate(1.08);
+    }
+
+    .stats-band {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      margin-top: clamp(1rem, 3vw, 2.5rem);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+    }
+
+    .stat {
+      min-height: 108px;
+      padding: 1.15rem;
+      border-right: 1px solid var(--border);
+    }
+
+    .stat:last-child {
+      border-right: 0;
+    }
+
+    .stat dt {
+      margin-bottom: 0.4rem;
+      color: var(--text-soft);
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .stat dd {
+      margin: 0;
+      color: var(--text);
+      font-family: var(--display);
+      font-size: clamp(1.2rem, 2vw, 1.65rem);
+      font-weight: 700;
+      letter-spacing: -0.035em;
+      line-height: 1.15;
+    }
+
+    .intro-grid,
+    .about-grid,
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(280px, 1.1fr);
+      gap: clamp(2rem, 5vw, 5rem);
+      align-items: start;
+    }
+
+    .lead {
+      font-size: clamp(1rem, 1.6vw, 1.2rem);
+      color: var(--text-muted);
+    }
+
+    .principles-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0.8rem;
+    }
+
+    .principle-card,
+    .project-card,
+    .info-panel,
+    .contact-card,
+    .timeline-item {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: var(--surface);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .principle-card {
+      min-height: 170px;
+      padding: 1rem;
+      display: grid;
+      align-content: space-between;
+      gap: 1rem;
+    }
+
+    .principle-index,
+    .project-index,
+    .timeline-date,
+    .eyebrow {
+      color: var(--text-soft);
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .principle-card p {
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+    .profile-photo {
+      width: min(220px, 100%);
+      margin: 0 0 0.5rem;
+      padding: 8px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: var(--surface);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .profile-photo img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: var(--radius);
+      filter: grayscale(100%);
+    }
+    .copy-stack {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .chip,
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 0.35rem 0.52rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--surface-strong);
+      color: var(--text-muted);
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      line-height: 1;
+      letter-spacing: 0.02em;
+    }
+
+    .info-panel {
+      overflow: hidden;
+    }
+
+    .info-row {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 1rem;
+      padding: 1rem 1.1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .info-row:last-child {
+      border-bottom: 0;
+    }
+
+    .info-row dt {
+      color: var(--text-soft);
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .info-row dd {
+      margin: 0;
+      color: var(--text);
+      font-weight: 600;
+      line-height: 1.35;
+    }
+
+    .section-head {
+      display: grid;
+      gap: 1rem;
+      margin-bottom: clamp(2rem, 4vw, 3rem);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .project-card {
+      padding: 1.15rem;
+      min-height: 310px;
+      display: grid;
+      gap: 1rem;
+      align-content: space-between;
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--border-strong);
+    }
+
+    .project-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .status-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.32rem 0.48rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--text-muted);
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .status-tag::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .project-copy {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .project-copy p {
+      font-size: 0.95rem;
+    }
+
+    .project-link,
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      width: fit-content;
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .project-link::after,
+    .contact-link::after {
+      content: "→";
+      transition: transform 180ms ease;
+    }
+
+    .project-link:hover::after,
+    .contact-link:hover::after {
+      transform: translateX(3px);
+    }
+
+    .timeline {
+      position: relative;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 0.5rem;
+      bottom: 0.5rem;
+      left: 1rem;
+      width: 1px;
+      background: var(--border-strong);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-left: 2.25rem;
+      padding: 1.15rem;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      top: 1.45rem;
+      left: -1.63rem;
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 5px var(--bg);
+    }
+
+    .timeline-item h3 {
+      margin: 0.35rem 0 0.55rem;
+    }
+
+    .timeline-item p {
+      max-width: 760px;
+      font-size: 0.95rem;
+    }
+
+    .contact-card {
+      padding: 1.2rem;
+    }
+
+    .contact-links {
+      display: grid;
+      gap: 0.7rem;
+      margin-top: 1.3rem;
+    }
+
+    .form {
+      display: grid;
+      gap: 0.85rem;
+    }
+
+    .field {
+      display: grid;
+      gap: 0.38rem;
+    }
+
+    .field label {
+      color: var(--text-soft);
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface-strong);
+      color: var(--text);
+      padding: 0.8rem 0.85rem;
+      line-height: 1.5;
+      transition: border-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .field textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      outline: 0;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px var(--focus);
+    }
+
+    .form-note {
+      color: var(--text-soft);
+      font-size: 0.86rem;
+    }
+
+    .site-footer {
+      border-top: 1px solid var(--border);
+      padding: 1.6rem 0;
+    }
+
+    .footer-inner {
+      width: min(100% - 2rem, var(--max-width));
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      color: var(--text-soft);
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 550ms ease, transform 550ms ease;
+    }
+
+    .reveal.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 920px) {
+      .principles-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .principle-card:last-child {
+        grid-column: 1 / -1;
+      }
+
+      .intro-grid,
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-band {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .stat:nth-child(2) {
+        border-right: 0;
+      }
+
+      .stat:nth-child(-n + 2) {
+        border-bottom: 1px solid var(--border);
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav-links {
+        position: fixed;
+        inset: var(--nav-height) 1rem auto 1rem;
+        display: grid;
+        gap: 0.25rem;
+        padding: 0.65rem;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        background: var(--surface-strong);
+        box-shadow: var(--shadow);
+        transform: translateY(-10px);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 180ms ease, transform 180ms ease, visibility 180ms ease;
+      }
+
+      .nav-links.open {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .nav-links a {
+        padding: 0.85rem 0.95rem;
+      }
+
+      .nav-links a::before {
+        left: 0.95rem;
+        right: auto;
+        width: 28px;
+      }
+
+      .menu-button {
+        display: inline-grid;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-card {
+        min-height: auto;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 560px) {
+      :root {
+        --nav-height: 66px;
+      }
+
+      .nav-wrap,
+      .section,
+      .footer-inner {
+        width: min(100% - 1.25rem, var(--max-width));
+      }
+
+      .brand-text {
+        max-width: 160px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero::before {
+        width: 84vw;
+        height: 84vw;
+        opacity: 0.55;
+      }
+
+      .cta-row {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .stats-band,
+      .principles-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stat,
+      .stat:nth-child(2) {
+        border-right: 0;
+      }
+
+      .stat:not(:last-child),
+      .stat:nth-child(-n + 2) {
+        border-bottom: 1px solid var(--border);
+      }
+
+      .principle-card:last-child {
+        grid-column: auto;
+      }
+
+      .info-row {
+        grid-template-columns: 1fr;
+        gap: 0.3rem;
+      }
+
+      .project-top {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      html {
+        scroll-behavior: auto;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="nav-wrap" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="LENA RYAZANOV home">
+        <span class="brand-mark" aria-hidden="true">LR</span>
+        <span class="brand-text">Lena Ryazanov</span>
+      </a>
+
+      <div class="nav-actions">
+        <div class="nav-links" id="navLinks">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#experience">Experience</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <button class="icon-button theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark theme" aria-pressed="false">
+          <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M21 14.2A8.2 8.2 0 0 1 9.8 3a7.8 7.8 0 1 0 11.2 11.2Z"></path>
+          </svg>
+          <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+          </svg>
+        </button>
+
+        <button class="icon-button menu-button" id="menuButton" type="button" aria-label="Open navigation menu" aria-controls="navLinks" aria-expanded="false">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="section hero reveal" id="top" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <p class="status-line">Senior Platform / Infrastructure Engineer · Vancouver, Canada</p>
+        <h1 id="hero-title">LENA RYAZANOV</h1>
+        <p class="role-line">Senior Staff Platform Engineer</p>
+        <p class="positioning">I build secure, reliable infrastructure platforms that make complex cloud-native systems easier to provision, operate, recover, and audit.</p>
+        <div class="cta-row" aria-label="Primary actions">
+          <a class="button primary" href="#projects">View work</a>
+          <a class="button" href="#contact">Get in touch</a>
+        </div>
+
+        <dl class="stats-band" aria-label="Professional snapshot">
+          <div class="stat">
+            <dt>Years</dt>
+            <dd>15+ in infrastructure</dd>
+          </div>
+          <div class="stat">
+            <dt>SLA</dt>
+            <dd>Reliability-first</dd>
+          </div>
+          <div class="stat">
+            <dt>Team</dt>
+            <dd>Platform enablement</dd>
+          </div>
+          <div class="stat">
+            <dt>Stack</dt>
+            <dd>Kubernetes · AWS</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="section reveal" id="work" aria-labelledby="work-title">
+      <div class="section-head intro-grid">
+        <div>
+          <span class="section-label">How I work</span>
+          <h2 id="work-title">Quiet systems. Clear ownership. Reliable outcomes.</h2>
+        </div>
+        <p class="lead">The best infrastructure feels boring for the teams who depend on it: predictable interfaces, safe automation, strong recovery paths, and enough auditability to understand what changed.</p>
+      </div>
+
+      <div class="principles-grid">
+        <article class="principle-card">
+          <span class="principle-index">01</span>
+          <div>
+            <h3>Security</h3>
+            <p>Design least-privilege access, secret boundaries, and safe defaults into the platform from day one.</p>
+          </div>
+        </article>
+        <article class="principle-card">
+          <span class="principle-index">02</span>
+          <div>
+            <h3>Reliability</h3>
+            <p>Treat stability as a product feature, with observability, error budgets, and operational clarity.</p>
+          </div>
+        </article>
+        <article class="principle-card">
+          <span class="principle-index">03</span>
+          <div>
+            <h3>Recovery</h3>
+            <p>Prefer systems that can be restored, replayed, re-created, and understood under pressure.</p>
+          </div>
+        </article>
+        <article class="principle-card">
+          <span class="principle-index">04</span>
+          <div>
+            <h3>Auditability</h3>
+            <p>Make changes traceable across code, infrastructure state, approvals, logs, and runtime events.</p>
+          </div>
+        </article>
+        <article class="principle-card">
+          <span class="principle-index">05</span>
+          <div>
+            <h3>Ownership</h3>
+            <p>Build platforms with clear contracts, documented failure modes, and teams that know the next step.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section reveal" id="about" aria-labelledby="about-title">
+      <div class="about-grid">
+        <div>
+          <span class="section-label">About</span>
+          <h2 id="about-title">Infrastructure engineering with platform product judgment.</h2>
+        </div>
+
+        <div class="copy-stack">
+          <figure class="profile-photo">
+            <img src="assets/profile.png" alt="Portrait of LENA RYAZANOV">
+          </figure>
+          <p>I am a Senior Staff Platform / Infrastructure Engineer focused on cloud-native systems, internal platforms, and automation that helps engineering teams ship safely without needing to understand every underlying detail.</p>
+          <p>My work often sits at the intersection of Kubernetes, AWS, database platforms, identity, observability, CI/CD, and operational design. I care about reducing manual paths, making recovery realistic, and turning repeated infrastructure patterns into stable self-service workflows.</p>
+          <p>I bring senior technical ownership across architecture, implementation, migration planning, incident learning, and cross-team alignment.</p>
+
+          <div>
+            <p class="eyebrow">Core stack</p>
+            <div class="chips" aria-label="Core stack">
+              <span class="chip">Kubernetes</span>
+              <span class="chip">AWS</span>
+              <span class="chip">Terraform</span>
+              <span class="chip">Crossplane</span>
+              <span class="chip">Helm</span>
+              <span class="chip">GitOps</span>
+              <span class="chip">PostgreSQL</span>
+              <span class="chip">Observability</span>
+              <span class="chip">IAM</span>
+              <span class="chip">Linux</span>
+            </div>
+          </div>
+
+          <dl class="info-panel" aria-label="At a glance">
+            <div class="info-row">
+              <dt>Focus</dt>
+              <dd>Platform engineering, infrastructure automation, service ownership</dd>
+            </div>
+            <div class="info-row">
+              <dt>Strength</dt>
+              <dd>Turning operational complexity into safe, repeatable workflows</dd>
+            </div>
+            <div class="info-row">
+              <dt>Systems</dt>
+              <dd>Cloud-native infrastructure, database platforms, access, observability</dd>
+            </div>
+            <div class="info-row">
+              <dt>Location</dt>
+              <dd>Vancouver, Canada</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="projects" aria-labelledby="projects-title">
+      <div class="section-head">
+        <span class="section-label">Projects</span>
+        <h2 id="projects-title">Selected platform work and systems patterns.</h2>
+        <p class="lead"><p>Selected platform and infrastructure work focused on reliability, secure automation, recovery, and reducing operational complexity at scale.</p></p>
+      </div>
+
+      <div class="projects-grid">
+        <article class="project-card">
+          <div class="project-top">
+            <span class="project-index">PRJ-01</span>
+            <span class="status-tag">Production</span>
+          </div>
+          <div class="project-copy">
+            <h3>Database Self-Service Controller</h3>
+            <p>Designed an internal platform workflow for provisioning and managing production database resources through Kubernetes-native APIs. The project reduced manual handoffs while improving consistency, auditability, and operational safety.</p>
+            <div class="chips" aria-label="Project technologies">
+              <span class="tag">Kubernetes</span>
+              <span class="tag">AWS RDS</span>
+              <span class="tag">CNPG</span>
+              <span class="tag">Crossplane</span>
+              <span class="tag">Terraform</span>
+              <span class="tag">GitOps</span>
+              <span class="tag">Golang</span>
+            </div>
+          </div>
+          <a class="project-link" href="#contact" aria-label="Discuss Database Self-Service Controller">Discuss project</a>
+        </article>
+
+        <article class="project-card">
+          <div class="project-top">
+            <span class="project-index">PRJ-02</span>
+            <span class="status-tag">Platform</span>
+          </div>
+          <div class="project-copy">
+            <h3>Unified Access Modernization</h3>
+            <p>Led modernization of infrastructure access patterns across a distributed environment. The work improved onboarding, audit trails, security posture, and operational confidence for engineering and operations teams.</p>
+            <div class="chips" aria-label="Project technologies">
+              <span class="tag">Teleport</span>
+              <span class="tag">Linux</span>
+              <span class="tag">Vault</span>
+              <span class="tag">Automation</span>
+              <span class="tag">Python</span>
+            </div>
+          </div>
+          <a class="project-link" href="#contact" aria-label="Discuss Unified Access Modernization">Discuss project</a>
+        </article>
+
+        <article class="project-card">
+          <div class="project-top">
+            <span class="project-index">PRJ-03</span>
+            <span class="status-tag">Migration</span>
+          </div>
+          <div class="project-copy">
+            <h3>Cloud-Native Platform Migration</h3>
+            <p>Supported migration from legacy infrastructure patterns into a Kubernetes and GitOps operating model. The initiative clarified ownership boundaries, release processes, observability expectations, and break-glass recovery paths.</p>
+            <div class="chips" aria-label="Project technologies">
+              <span class="tag">EKS</span>
+              <span class="tag">Helm</span>
+              <span class="tag">Flux</span>
+              <span class="tag">Prometheus</span>
+              <span class="tag">Bash</span>
+            </div>
+          </div>
+          <a class="project-link" href="#contact" aria-label="Discuss Cloud-Native Platform Migration">Discuss project</a>
+        </article>
+
+        <article class="project-card">
+          <div class="project-top">
+            <span class="project-index">PRJ-04</span>
+            <span class="status-tag">Reliability</span>
+          </div>
+          <div class="project-copy">
+            <h3>Observability and Incident Readiness</h3>
+            <p>Built dashboards, alerts, runbooks, and service-level views to make system health easier to reason about. The work focused on practical signal quality, response paths, and shared operational language.</p>
+            <div class="chips" aria-label="Project technologies">
+              <span class="tag">Prometheus</span>
+              <span class="tag">Grafana</span>
+              <span class="tag">Thanos</span>
+              <span class="tag">Runbooks</span>
+            </div>
+          </div>
+          <a class="project-link" href="#contact" aria-label="Discuss Observability and Incident Readiness">Discuss project</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section reveal" id="experience" aria-labelledby="experience-title">
+      <div class="section-head">
+        <span class="section-label">Experience</span>
+        <h2 id="experience-title">A timeline of infrastructure ownership.</h2>
+        <p class="lead">Use this section to summarize senior roles, scope, and systems without turning the page into a full resume.</p>
+      </div>
+
+      <div class="timeline">
+        <article class="timeline-item">
+          <span class="timeline-date">2024 — Present</span>
+          <h3>Senior Staff Devops Engineer · INFOBLOX</h3>
+          <p>Building and leading a Kubernetes-native internal platform that gives engineering teams self-service access to backend application services through custom controllers. The platform abstracts infrastructure complexity, automates service lifecycle management, and creates a consistent operating model for provisioning, scaling, and managing production services.</p>
+        </article>
+        <article class="timeline-item">
+          <span class="timeline-date">2021 — 2024</span>
+          <h3>Senior Site Reliability Engineer · QWILT</h3>
+          <p>Led and built core infrastructure capabilities for Qwilt’s distributed production environments, with a focus on secure access, observability, automation, and reliability. Partnered across engineering, operations, and platform teams to deliver production-ready systems that improved operational visibility, strengthened security, and supported reliable change delivery at scale.</p>
+        </article>
+        <article class="timeline-item">
+          <span class="timeline-date">2017 — 2021</span>
+          <h3>Infrastructure / DevOps Engineer · CISCO</h3>
+          <p>Built and operated infrastructure, observability, and deployment automation for Cisco Umbrella across production and GovCloud environments. Worked across Linux systems, cloud security, CI/CD, Python, and Go to improve reliability, monitoring consistency, and operational visibility in regulated cloud infrastructure.</p>
+        </article>
+        <article class="timeline-item">
+          <span class="timeline-date">Earlier</span>
+          <h3>Systems Engineer · FORTINET</h3>
+          <p>Led and built automation platforms for Fortinet’s internal Linux infrastructure, focusing on secure operations, configuration management, vulnerability remediation, and infrastructure change delivery. Designed code-driven workflows, deployment pipelines, and internal automation repositories that improved consistency, reduced manual effort, and strengthened operational hardening across the organization.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section reveal" id="contact" aria-labelledby="contact-title">
+      <div class="contact-grid">
+        <div>
+          <span class="section-label">Contact</span>
+          <h2 id="contact-title">Reachable for thoughtful technical conversations.</h2>
+          <div class="contact-links" aria-label="Contact links">
+            <a class="contact-link" href="mailto:yelenary@gmail.com">email me</a>
+            <a class="contact-link" href="https://www.linkedin.com/in/lena-ryazanov/" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a class="contact-link" href="https://github.com/yelenary" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <form class="form" id="contactForm">
+            <div class="field">
+              <label for="fromName">Name</label>
+              <input id="fromName" name="name" type="text" autocomplete="name" placeholder="YOUR NAME" required>
+            </div>
+            <div class="field">
+              <label for="fromEmail">Email</label>
+              <input id="fromEmail" name="email" type="email" autocomplete="email" placeholder="you@domain.com" required>
+            </div>
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="A short note or technical question" required></textarea>
+            </div>
+            <button class="button primary" type="submit">Open email client</button>
+            <p class="form-note">This form uses your email client. No message is stored or sent by this page.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>LENA RYAZANOV · <span id="year">2026</span></span>
+      <span>Senior Staff Platform / Infrastructure Engineer</span>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var themeToggle = document.getElementById('themeToggle');
+      var menuButton = document.getElementById('menuButton');
+      var navLinks = document.getElementById('navLinks');
+      var navAnchors = Array.prototype.slice.call(document.querySelectorAll('.nav-links a'));
+      var sections = navAnchors
+        .map(function (link) { return document.querySelector(link.getAttribute('href')); })
+        .filter(Boolean);
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var storedTheme = localStorage.getItem('portfolio-theme');
+      var systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var initialTheme = storedTheme || (systemPrefersDark ? 'dark' : 'light');
+
+      function applyTheme(theme) {
+        root.setAttribute('data-theme', theme);
+        var nextTheme = theme === 'dark' ? 'light' : 'dark';
+        themeToggle.setAttribute('aria-label', 'Switch to ' + nextTheme + ' theme');
+        themeToggle.setAttribute('aria-pressed', String(theme === 'dark'));
+      }
+
+      function closeMenu() {
+        navLinks.classList.remove('open');
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.setAttribute('aria-label', 'Open navigation menu');
+      }
+
+      function openMenu() {
+        navLinks.classList.add('open');
+        menuButton.setAttribute('aria-expanded', 'true');
+        menuButton.setAttribute('aria-label', 'Close navigation menu');
+      }
+
+      applyTheme(initialTheme);
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      themeToggle.addEventListener('click', function () {
+        var nextTheme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        localStorage.setItem('portfolio-theme', nextTheme);
+        applyTheme(nextTheme);
+      });
+
+      menuButton.addEventListener('click', function () {
+        var isOpen = menuButton.getAttribute('aria-expanded') === 'true';
+        isOpen ? closeMenu() : openMenu();
+      });
+
+      navAnchors.forEach(function (link) {
+        link.addEventListener('click', closeMenu);
+      });
+
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') {
+          closeMenu();
+        }
+      });
+
+      document.addEventListener('click', function (event) {
+        if (!navLinks.contains(event.target) && !menuButton.contains(event.target)) {
+          closeMenu();
+        }
+      });
+
+      if ('IntersectionObserver' in window) {
+        var revealObserver = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in-view');
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.reveal').forEach(function (element) {
+          if (reducedMotion) {
+            element.classList.add('in-view');
+          } else {
+            revealObserver.observe(element);
+          }
+        });
+
+        var spyObserver = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              var id = entry.target.getAttribute('id');
+              navAnchors.forEach(function (link) {
+                link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+              });
+            }
+          });
+        }, {
+          rootMargin: '-35% 0px -55% 0px',
+          threshold: 0
+        });
+
+        sections.forEach(function (section) {
+          spyObserver.observe(section);
+        });
+      } else {
+        document.querySelectorAll('.reveal').forEach(function (element) {
+          element.classList.add('in-view');
+        });
+      }
+
+      document.getElementById('contactForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+        var form = event.currentTarget;
+        var name = form.elements.name.value.trim();
+        var email = form.elements.email.value.trim();
+        var message = form.elements.message.value.trim();
+        var targetEmail = 'yelenary@gmail.com';
+        var subject = encodeURIComponent('Portfolio message from ' + name);
+        var body = encodeURIComponent(
+          'Name: ' + name + '\n' +
+          'Email: ' + email + '\n\n' +
+          message
+        );
+
+        window.location.href = 'mailto:' + targetEmail + '?subject=' + subject + '&body=' + body;
+      });
+    })();
+  </script>
+</body>
+</html>
