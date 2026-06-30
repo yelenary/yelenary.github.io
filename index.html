@@ -1364,7 +1364,7 @@
       var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       var storedTheme = localStorage.getItem('portfolio-theme');
       var systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      var initialTheme = storedTheme || (systemPrefersDark ? 'dark' : 'light');
+      var initialTheme = storedTheme || 'dark';
 
       function applyTheme(theme) {
         root.setAttribute('data-theme', theme);
